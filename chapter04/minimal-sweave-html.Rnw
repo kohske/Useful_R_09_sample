@@ -1,0 +1,14 @@
+<html>
+<head><title>HTMLマークアップでSweave</title></head>
+<body>
+
+<<>>=
+set.seed(42)
+mean(rnorm(10))
+@ 
+
+<p>1から10の平均は<Sexpr mean(1:10)>です。</p>
+</body>
+</html>
+
+

@@ -1,0 +1,38 @@
+---
+title       : オリジナルレイアウト
+author      : "@kohske"
+framework   : io2012
+mode        : standalone
+--- &threecol w1:20% w2:45% w3:20%
+
+```{r setup, include=FALSE, cache=FALSE}
+library(knitr)
+knit_hooks$set(par = function(before, options, envir) {if (before) par(mar=c(2.5, 2.5, 1.5, 1))})
+opts_chunk$set(echo=FALSE, fig.align="center", fig.width=2.5, fig.height=2.5, par=TRUE)
+```
+
+## irisの可視化 (3段組)
+
+*** =left
+ガクの長さ
+```{r}
+plot(Sepal.Length ~ Species, data = iris)
+```
+ガクの幅
+```{r}
+plot(Sepal.Width ~ Species, data = iris)
+```
+*** =center
+相関の可視化
+```{r, fig.width=6, fig.height=6}
+plot(iris[, 1:4])
+```
+*** =right
+花弁の長さ
+```{r}
+plot(Petal.Length ~ Species, data = iris)
+```
+花弁の幅
+```{r}
+plot(Petal.Width ~ Species, data = iris)
+```

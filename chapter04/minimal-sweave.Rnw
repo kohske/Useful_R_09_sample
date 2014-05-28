@@ -1,0 +1,33 @@
+\documentclass{ltjsarticle}
+\pagestyle{empty}
+\title{はじめての\textbf{Sweave}}
+\author{@kohske}
+
+% フックの登録
+<<echo=FALSE, include=FALSE>>=
+options(SweaveHooks = list(m = function() {par(mar=c(3, 3, 1, 1))}))
+@ 
+
+% 既定のチャンクオプション
+\SweaveOpts{echo=FALSE}
+
+\begin{document}
+\maketitle
+
+10000個の正規乱数の平均値です。
+
+<<echo=TRUE>>=
+set.seed(42)
+x <- rnorm(10000)
+mean(x)
+@
+
+分散は\Sexpr{var(x)}です。
+
+\vspace{1em}
+<<minimal-sweave-plot, fig=TRUE, m=TRUE, height=2, width=4>>=
+hist(x, probability = TRUE)
+curve(dnorm(x), add=TRUE)
+@
+
+\end{document}

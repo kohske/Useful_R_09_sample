@@ -1,0 +1,55 @@
+# rCharts featuring NVD3
+
+```{r setup, include=FALSE, cache=FALSE}
+# セットアップチャンク
+set.seed(42)
+
+library(knitr)
+opts_chunk$set(results="asis", cache=FALSE) # rChartsの出力用オプション
+
+library(rCharts)
+
+# プロットのサイズを設定
+w <- 800; h <- 600
+options(RCHART_WIDTH=w, RCHART_HEIGHT=h)
+
+# 出力用補助関数
+o0 <- function(x) x$show("inline", include_assets = TRUE, cdn = TRUE)
+o <- function(x) x$show("inline", include_assets = FALSE)
+```
+
+<!-- プロットのスタイル指定 -->
+<style>
+.rChart { border: solid 2px; margin: auto; width: `r w`px; height: `r h`px;}
+</style>
+
+## 散布図
+```{r}
+p <- nPlot(Sepal.Length ~ Sepal.Width, group = "Species", data = iris, type = "scatterChart")
+p$chart(showDistX = TRUE, showDistY = TRUE)
+o0(p)
+```
+
+## 棒グラフ
+```{r}
+hair_eye <- as.data.frame(HairEyeColor)
+p <- nPlot(Freq ~ Hair, group = 'Eye', data = subset(hair_eye, Sex == "Female"), type = 'multiBarChart')
+o(p)
+```
+
+## ドーナツチャート
+```{r}
+d <- data.frame(label = c("とらドラ！", "化物語", "俺の妹がこんなに可愛いわけがない", "IS"), value = c(193, 162, 97, 88))
+p <- nPlot(value ~ label, data = d, type = 'pieChart')
+p$chart(donut=TRUE)
+o(p)
+```
+
+## 二軸プロット
+```{r}
+d <- data.frame(expand.grid(x = 1:10, n = c("a", "b")), y = c(runif(10), runif(10)*100))
+p <- nPlot(y ~ x, group = "n", data = d, type = 'multiChart')
+p$params$multi <- list(a = list(type="line", yAxis=1), b = list(type="area", yAxis=2))
+p$setTemplate(script = system.file("/libraries/nvd3/layouts/multiChart.html", package = "rCharts"))
+o(p)
+```

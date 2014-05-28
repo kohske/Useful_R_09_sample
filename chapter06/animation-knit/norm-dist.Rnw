@@ -1,0 +1,34 @@
+\documentclass{ltjsarticle}
+\pagestyle{empty}
+
+\let\ifdraft\relax % ltjsarticleとanimateの共存用おまじない
+\usepackage{animate}
+\title{PDFレポートでアニメーション}
+\author{@kohske}
+
+\begin{document}
+\maketitle
+
+animateパッケージを使ってアニメーションを表示しています。
+
+\begin{figure}[h]
+\centering
+<<norm-dist-fig, fig.show="animate", out.width='.4\\linewidth', echo=FALSE, aniopts="loop, controls, autoplay", interval=0.25>>=
+par(mar = rep(3, 4))
+for (n in 10^(1:6)) {
+  x <- rnorm(n)
+  hist(x, xlim = c(-4, 4), ylim = c(0, 1), breaks = c(-Inf, seq(-4, 4, 0.1), Inf), main=paste("N = ", n))
+}
+@ 
+\caption{アニメーションの出力}
+\end{figure}
+
+サンプルサイズが大きいほど、理論上の分布に一致します。
+例えば平均は理論値は0ですが、サンプル平均は
+
+<<>>=
+sapply(10^(1:6), function(x) mean(rnorm(x)))
+@ 
+
+となります。
+\end{document}

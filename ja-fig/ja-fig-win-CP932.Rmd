@@ -1,0 +1,48 @@
+# プロットでの日本語フォントの利用 (Windows CP932)
+
+```{r, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.path = "figure/ja-fig-win-CP932-", fig.height=5, fig.width=5, fig.align="center", echo=FALSE)
+library(grid)
+
+# フォントの登録
+windowsFonts(JP1 = windowsFont("HG行書体"),
+             JP2 = windowsFont("HG丸ｺﾞｼｯｸM-PRO"),
+             JP3 = windowsFont("Meiryo"))
+```
+
+このRマークダウンファイルはCP932(Shift_JIS)エンコーディングで保存してください。次のコマンドでHTMLファイルを作成できます。
+
+```{r eval=F, echo=T}
+library(knitr)
+opts_knit$restore()
+opts_chunk$restore()
+knit("ja-fig-win-CP932.Rmd")
+Sys.setlocale(locale="C")
+cat(iconv(markdown::markdownToHTML("ja-fig-win-CP932.md"),
+	from="CP932", to="utf-8"),
+	file = "ja-fig-win-CP932.html")
+Sys.setlocale(locale="Japanese_Japan.932")
+browseURL("ja-fig-win-CP932.html")
+```
+
+```{r include=FALSE}
+# 下書きデバイスの設定
+opts0 <- options(device = function(file, width = 7, height = 7, ...) win.metafile(filename=tempfile(), width = width, height = height, ...))
+```
+
+```{r fig1}
+# メイリオでプロットします。
+par(family="JP3")
+plot(1:100, (1:100)^2, main="ざわ・・ざわ・・・", xlab="ざわ・・・", ylab="ざわ・・・")
+# 別のフォントを使います。
+par(family = "JP1")
+mtext("ざわ・・ざわ・・・", 4, line=1, cex=1.5)
+# gridグラフィックスを使ってみます。
+grid.text(x = 0.5, y = 0.6, "ざわ・・・\n　　ざわ・・・", gp = gpar(fontsize = 16, fontfamily = "JP2"))
+```
+
+```{r include=FALSE}
+# 下書きデバイスの復元
+options(opts0)
+```

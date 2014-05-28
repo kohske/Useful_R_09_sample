@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>slidify + rCharts = \(\infty\)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="slidify + rCharts = \(\infty\)">
+  <meta name="author" content="@kohske">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/frameworks/io2012/js/slides" 
+    src="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>slidify + rCharts = \(\infty\)</h1>
+    <h2></h2>
+    <p>@kohske<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>rChartsのプロットを埋め込む</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">hair_eye = as.data.frame(HairEyeColor)
+p &lt;- rPlot(Freq ~ Hair | Eye, color = &#39;Eye&#39;, data = hair_eye, type = &#39;bar&#39;)
+p$show(&quot;iframesrc&quot;, cdn = TRUE)
+</code></pre>
+
+<iframe srcdoc=' &lt;!doctype HTML&gt;
+&lt;meta charset = &#039;utf-8&#039;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    
+    &lt;script src=&#039;http://ramnathv.github.io/rCharts/libraries/widgets/polycharts/js/polychart2.standalone.js&#039; type=&#039;text/javascript&#039;&gt;&lt;/script&gt;
+    
+    &lt;style&gt;
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 800px;
+      height: 400px;
+    }  
+    &lt;/style&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&#039;chart8c37000be36&#039; class=&#039;rChart polycharts&#039;&gt;&lt;/div&gt;  
+    
+    &lt;script type=&#039;text/javascript&#039;&gt;
+    var chartParams = {
+ &quot;dom&quot;: &quot;chart8c37000be36&quot;,
+&quot;width&quot;:    800,
+&quot;height&quot;:    400,
+&quot;layers&quot;: [
+ {
+ &quot;x&quot;: &quot;Hair&quot;,
+&quot;y&quot;: &quot;Freq&quot;,
+&quot;data&quot;: {
+ &quot;Hair&quot;: [ &quot;Black&quot;, &quot;Brown&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;Black&quot;, &quot;Brown&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;Black&quot;, &quot;Brown&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;Black&quot;, &quot;Brown&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;Black&quot;, &quot;Brown&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;Black&quot;, &quot;Brown&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;Black&quot;, &quot;Brown&quot;, &quot;Red&quot;, &quot;Blond&quot;, &quot;Black&quot;, &quot;Brown&quot;, &quot;Red&quot;, &quot;Blond&quot; ],
+&quot;Eye&quot;: [ &quot;Brown&quot;, &quot;Brown&quot;, &quot;Brown&quot;, &quot;Brown&quot;, &quot;Blue&quot;, &quot;Blue&quot;, &quot;Blue&quot;, &quot;Blue&quot;, &quot;Hazel&quot;, &quot;Hazel&quot;, &quot;Hazel&quot;, &quot;Hazel&quot;, &quot;Green&quot;, &quot;Green&quot;, &quot;Green&quot;, &quot;Green&quot;, &quot;Brown&quot;, &quot;Brown&quot;, &quot;Brown&quot;, &quot;Brown&quot;, &quot;Blue&quot;, &quot;Blue&quot;, &quot;Blue&quot;, &quot;Blue&quot;, &quot;Hazel&quot;, &quot;Hazel&quot;, &quot;Hazel&quot;, &quot;Hazel&quot;, &quot;Green&quot;, &quot;Green&quot;, &quot;Green&quot;, &quot;Green&quot; ],
+&quot;Sex&quot;: [ &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Female&quot; ],
+&quot;Freq&quot;: [     32,     53,     10,      3,     11,     50,     10,     30,     10,     25,      7,      5,      3,     15,      7,      8,     36,     66,     16,      4,      9,     34,      7,     64,      5,     29,      7,      5,      2,     14,      7,      8 ] 
+},
+&quot;facet&quot;: &quot;Eye&quot;,
+&quot;color&quot;: &quot;Eye&quot;,
+&quot;type&quot;: &quot;bar&quot; 
+} 
+],
+&quot;facet&quot;: {
+ &quot;type&quot;: &quot;wrap&quot;,
+&quot;var&quot;: &quot;Eye&quot; 
+},
+&quot;guides&quot;: [],
+&quot;coord&quot;: [],
+&quot;id&quot;: &quot;chart8c37000be36&quot; 
+}
+    _.each(chartParams.layers, function(el){
+        el.data = polyjs.data(el.data)
+    })
+    var graph_chart8c37000be36 = polyjs.chart(chartParams);
+&lt;/script&gt;
+    
+  &lt;/body&gt;
+&lt;/html&gt; '></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='rChartsのプロットを埋め込む'>
+         1
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="/Library/Frameworks/R.framework/Versions/3.0/Resources/library/slidifyLibraries/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

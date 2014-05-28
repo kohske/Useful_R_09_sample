@@ -1,0 +1,22 @@
+\documentclass{ltjsarticle}
+\usepackage{luatexja} 
+\pagestyle{empty}
+\title{\textbf{knitr}で日本語}
+\author{@kohske}
+
+\begin{document}
+\maketitle
+
+Mac + UTF8です。次のコマンドでPDFレポートを作成できます。
+
+<<eval=F>>=
+library(knitr)
+knit2pdf("mac-lua-utf8.Rnw", compiler = "lualatex")
+@ 
+
+<<>>=
+a <- "ざわ・・・"
+paste(rep(a, 4), collapse=" ")
+@ 
+
+\end{document}

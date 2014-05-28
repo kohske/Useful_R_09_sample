@@ -1,0 +1,95 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    <link rel='stylesheet' href='http://cdn.oesmith.co.uk/morris-0.4.2.min.css'>
+    
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js' type='text/javascript'></script>
+    <script src='http://cdn.oesmith.co.uk/morris-0.4.2.min.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 800px;
+      height: 400px;
+    }  
+    </style>
+    
+  </head>
+  <body>
+    <div id='chart47121bc46cbf' class='rChart morris'></div>  
+    
+    <script type='text/javascript'>
+    var chartParams = {
+ "element": "chart47121bc46cbf",
+"width":            800,
+"height":            400,
+"xkey": "x",
+"ykeys": [
+ "rate",
+"myrate" 
+],
+"data": [
+ {
+ "x": "1983",
+"title": "'83冬",
+"rate":           26.4,
+"myrate":             10 
+},
+{
+ "x": "1984",
+"title": "'84夏",
+"rate":           24.3,
+"myrate":             10 
+},
+{
+ "x": "1987",
+"title": "'87初恋",
+"rate":           20.5,
+"myrate":             50 
+},
+{
+ "x": "1989",
+"title": "'89帰郷",
+"rate":           33.3,
+"myrate":             20 
+},
+{
+ "x": "1992",
+"title": "'92巣立ち",
+"rate":             32,
+"myrate":             40 
+},
+{
+ "x": "1995",
+"title": "'95秘密",
+"rate":           30.8,
+"myrate":             60 
+},
+{
+ "x": "1998",
+"title": "'98時代",
+"rate":           25.5,
+"myrate":             60 
+},
+{
+ "x": "2002",
+"title": "'02遺言",
+"rate":           36.2,
+"myrate":             50 
+} 
+],
+"labels": [ "＊＊率", "マイ評価" ],
+"smooth": false,
+"hoverCallback":  function (index, options, content) { return(options.data[index].title);} ,
+"id": "chart47121bc46cbf" 
+},
+      chartType = "Line"
+    new Morris[chartType](chartParams)
+</script>
+    
+  </body>
+</html>

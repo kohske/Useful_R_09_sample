@@ -1,0 +1,15 @@
+# WebGLで3Dデータの可視化
+
+```{r include=FALSE}
+# webgl用のフックを指定
+library(knitr)
+knit_hooks$set(webgl = hook_webgl)
+```
+
+## `iris`データの3次元プロット
+
+```{r webgl-sample-01, webgl=TRUE, echo=FALSE}
+# チャンクオプションでwebglフックを有効に
+library(rgl)
+plot3d(iris[, 2:4], col=gray(c(0, 0.3, 0.6))[iris$Species], size = 10)
+```

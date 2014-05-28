@@ -1,0 +1,13 @@
+# knitrで日本語
+
+Mac + CP932 (Shift_JIS)です。次のコマンドでHTMLレポートを作成できます。
+
+```{r eval=F}
+library(knitr)
+writeLines(knit2html(text = iconv(readLines("mac-CP932.Rmd"), from="CP932", to="utf8")), "mac-CP932.html")
+```
+
+```{r}
+a <- "ざわ・・・"
+paste(rep(a, 4), collapse=" ")
+```

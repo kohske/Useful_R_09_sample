@@ -1,0 +1,17 @@
+\documentclass{ltjsarticle}
+\pagestyle{empty}
+\title{\textbf{knitr}で日本語}
+\author{@kohske}
+
+\begin{document}
+\maketitle
+
+Windows + UTF8です。
+日本語のテストです。
+
+<<highlight=FALSE>>=
+a <-  "日本語。。。"
+paste(rep(a, 4), collapse=" ")
+@ 
+
+\end{document}

@@ -1,0 +1,20 @@
+---
+title       : slidify + rCharts = \(\infty\)
+author      : "@kohske"
+framework   : io2012
+widgets     : [mathjax]
+mode        : draft
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+library(rCharts)
+```
+## rChartsのプロットを埋め込む
+
+```{r, results="asis", cache=FALSE}
+hair_eye = as.data.frame(HairEyeColor)
+p <- rPlot(Freq ~ Hair | Eye, color = 'Eye', data = hair_eye, type = 'bar')
+p$show("iframesrc", cdn = TRUE)
+```
+
+

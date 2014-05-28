@@ -1,0 +1,22 @@
+\documentclass{jsarticle}
+\pagestyle{empty}
+\title{\textbf{knitr}で日本語}
+\author{@kohske}
+
+\begin{document}
+\maketitle
+
+Mac + CP932です。次のコマンドでPDFレポートを作成できます。
+
+<<eval=F>>=
+library(knitr)
+knit("mac-platex-CP932.Rnw", encoding="CP932")
+system('ptex2pdf -l -ot "-kanji=sjis" mac-platex-CP932')
+@ 
+
+<<>>=
+a <- "ざわ・・・"
+paste(rep(a, 4), collapse=" ")
+@ 
+
+\end{document}

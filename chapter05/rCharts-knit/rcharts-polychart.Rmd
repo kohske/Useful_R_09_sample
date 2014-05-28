@@ -1,0 +1,63 @@
+# rCharts featuring Polychart
+
+```{r setup, include=FALSE, cache=FALSE}
+# セットアップチャンク
+set.seed(42)
+
+library(knitr)
+opts_chunk$set(results="asis", cache=FALSE) # rChartsの出力用オプション
+
+library(rCharts)
+
+# プロットのサイズを設定
+w <- 800; h <- 600
+options(RCHART_WIDTH=w, RCHART_HEIGHT=h)
+
+# 出力用補助関数
+o0 <- function(x) x$show("inline", include_assets = TRUE, cdn = TRUE)
+o <- function(x) x$show("inline", include_assets = FALSE)
+```
+
+<!-- プロットのスタイル指定 -->
+<style>
+.rChart { border: solid 2px; margin: auto; width: `r w`px; height: `r h`px;}
+</style>
+
+## ファセットと色の指定
+```{r}
+o0(rPlot( mpg~qsec | am+vs, data=mtcars, color = "cyl", type="point"))
+```
+
+## グラフの種類の指定とポジショニングの指定
+```{r}
+hair_eye <- as.data.frame(HairEyeColor)
+o(rPlot(Freq ~ Hair, color = "Eye", data = hair_eye, type = "bar", position = "dodge"))
+```
+
+## 座標系と軸の指定
+```{r}
+p <- rPlot(x = NULL, y = "Freq", facet = c("Hair", "Sex"), color = "Eye", data = hair_eye, type = "bar")
+p$params$layers[[1]]$x <- NULL
+p$coord(type = "polar") # パイチャート
+p$guides(x = list(position = "none", padding = 0), y = list(numticks=10)) # 軸を変更
+o(p)
+```
+
+## レイヤーの重ね書きとデコレーション
+
+```{r}
+d <- data.frame(x = letters[1:10], y = runif(10))
+p <- rPlot(y ~ x, data=d, type="bar")
+p$layer(type = "line", color = list(const="green"), copy_layer = TRUE)
+p$layer(type = "point", color = list(const="red"), copy_layer = TRUE)
+p$addParams(title = "グラフのタイトル")
+p$guides(x = list(title = "文字(X軸タイトル)"), y = list(title = "数値(Y軸タイトル)"))
+o(p)
+```
+
+## インタラクティブな動作のカスタマイズ
+```{r}
+d <- data.frame(x = letters[1:10], y = runif(10))
+p <- rPlot(y ~ x, data=d, type="bar", tooltip = "#! function(i) {return('Xは「'+i.x+'」です');} !#")
+o(p)
+```

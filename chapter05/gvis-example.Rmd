@@ -1,0 +1,46 @@
+# googleVisの利用例
+
+```{r setup, include=FALSE, cache=FALSE}
+library(googleVis)
+library(plyr)
+```
+
+## 縦と横の棒グラフ
+
+```{r, results="asis"}
+d <- ddply(iris, .(Species), colwise(mean))
+p1 <- gvisBarChart(d)
+p2 <- gvisColumnChart(d, options=list(isStacked=TRUE))
+p <- gvisMerge(p1, p2, horizontal = FALSE, chartid = "chart01")
+print(p, tag = "chart")
+```
+
+## ゲージチャート
+```{r, results="asis"}
+p <- gvisGauge(d, labelvar="Species", numvar=c("Sepal.Length"), chartid = "chart02")
+print(p, tag = "chart")
+```
+
+## 入れ子の棒グラフ
+```{r, results="asis"}
+library(reshape2)
+d <- dcast(as.data.frame(HairEyeColor), Hair~Eye, fun.aggregate=mean)
+p <- gvisBarChart(d, options = list(vAxis = "{title: \"Hair\"}"), chartid = "chart03")
+print(p, tag = "chart")
+```
+
+## エリアチャート、２軸の線グラフ
+```{r, results="asis"}
+d <- data.frame(x = paste(2001:2010), y1 = runif(10), y2 = runif(10)*10, y3 = runif(10))
+p1 <- gvisAreaChart(d, options = list(isStacked = TRUE))
+p2 <- gvisLineChart(d, xvar = "x", yvar = c("y1", "y2"), 
+                    options = list(series="[{targetAxisIndex: 0}, {targetAxisIndex:1}]"))
+p <- gvisMerge(p1, p2, horizontal = TRUE, chartid = "chart04")
+print(p, tag = "chart")
+```
+
+## 表
+```{r, results="asis"}
+p <- gvisTable(iris, chartid = "chart05")
+print(p, tag = "chart")
+```

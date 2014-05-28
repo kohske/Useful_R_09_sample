@@ -1,0 +1,15 @@
+h1. Textileマークアップでknitr
+
+bc(knitr r source#chunk-01).. > set.seed(42)
+> mean(rnorm(10))
+
+p(knitr_end). 
+
+bc(knitr r output#chunk-01).. ## [1] 0.5473
+
+p(knitr_end). 
+
+
+
+
+1から10の平均は@5.5@です。

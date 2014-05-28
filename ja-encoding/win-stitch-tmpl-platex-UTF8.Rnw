@@ -1,0 +1,22 @@
+\documentclass{jsarticle}
+\pagestyle{empty}
+\title{\Sexpr{.knitr.title}}
+\author{\Sexpr{.knitr.author}}
+
+\begin{document}
+\maketitle
+
+\Sexpr{format(Sys.Date(), "%Y年%b月%d日(%a)")}
+
+stitchで日本語
+
+<<setup, include=FALSE>>=
+library(knitr)
+opts_chunk$set(highlight=FALSE)
+@ 
+
+<<%sCHUNK_LABEL_HERE>>=
+@
+
+\end{document}
+

@@ -1,0 +1,21 @@
+\documentclass{jsarticle}
+\pagestyle{empty}
+\title{\textbf{knitr}で日本語}
+\author{@kohske}
+
+\begin{document}
+\maketitle
+
+Windows + CP932です。
+
+<<highlight=FALSE>>=
+a <- "日本語。。。"
+paste(rep(a, 4), collapse=" ")
+@ 
+
+<<>>=
+a <- "じぇ・・"
+paste(rep(a, 4), collapse=" ")
+@ 
+
+\end{document}

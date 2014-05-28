@@ -1,0 +1,24 @@
+\documentclass{ltjsarticle}
+\usepackage{luatexja} 
+\pagestyle{empty}
+\title{\LaTeX で3次元プロット(視点変換付き)}
+\author{@kohske}
+
+\begin{document}
+\maketitle
+
+% セットアップチャンク
+<<include=FALSE>>=
+library(knitr)
+knit_hooks$set(rgl = hook_rgl)
+library(rgl)
+@
+
+\texttt{rgl}の図を埋め込むにはフックを指定します。
+% フックを指定
+<<rgl-sample-view, rgl=TRUE, fig.align="center", fig.pos="h", out.width="0.8\\linewidth">>=
+plot3d(iris[, 1:3], size = 10, col = gray(c(0, 0.2, 0.4))[iris$Species])
+load("viewp.Rda")
+par3d(userMatrix = viewp)
+@
+\end{document}

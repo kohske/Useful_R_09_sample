@@ -1,0 +1,19 @@
+# knitr + rCharts = \(\infty\)
+
+```{r setup, include=FALSE}
+library(rCharts)
+# rchartsプロットのサイズを設定
+options(RCHART_WIDTH=500, RCHART_HEIGHT=200)
+```
+
+<!-- IDによってスタイルを設定しています -->
+<style>
+#plot01 { border: solid 2px; }
+</style>
+
+rChartsのプロットを埋め込む
+
+```{r, results="asis"}
+p <- rPlot(mpg~qsec, data=mtcars, type="point")
+p$show("inline", chartId = "plot01", include_assets = TRUE, cdn = TRUE)
+```

@@ -1,0 +1,43 @@
+R Presentationで楽々スライド作成
+========================================================
+author: @kohske
+date: 2014/3/14
+transition: rotate
+transition-speed: fast
+font-family: Meiryo
+
+irisの概要
+========================================================
+title: false
+
+- データ構造
+```{r, results='asis', echo=FALSE}
+knitr::kable(head(iris, 3))
+```
+
+- 平均
+
+<small>種ごとの平均です</small>
+```{r, echo=FALSE, results='asis'}
+library(plyr)
+knitr::kable(ddply(iris, .(Species), colwise(mean)))
+```
+
+第２部
+========================================================
+type: sub-section
+
+irisの可視化
+
+irisの可視化 (2段組)
+========================================================
+left: 64%
+```{r echo=FALSE}
+plot(iris)
+```
+***
+### Spetal.Lengthの箱ひげ図
+```{r echo=FALSE}
+boxplot(iris[, 1] ~ iris[, 5])
+```
+

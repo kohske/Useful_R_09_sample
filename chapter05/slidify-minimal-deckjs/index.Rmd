@@ -1,0 +1,38 @@
+---
+framework: deckjs
+deckjs: {theme: web-2.0}
+highlighter: highlight.js
+hitheme    : solarized_light
+widgets    : [mathjax]
+mode : standalone
+---
+
+# はじめての<br/>slidify & deckjs
+
+## @kohske
+
+---
+
+## 平均とは
+ 
+- \(\frac{1}{n}\sum_{i}x_i\) ということです。
+
+### 乱数の生成
+
+10000個の正規乱数を生成して平均値を求めます。
+
+```{r, echo=-1}
+set.seed(42)
+mean(rnorm(10000))
+```
+
+### ヒストグラム
+
+正規乱数をヒストグラムとカーブフィッティングにより可視化します。
+
+```{r fig-01, echo=F, fig.align="center", fig.width=10, fig.height=3}
+x <- rnorm(1000)
+par(mar=c(2.5, 2.5, 1.5, 1))
+hist(x, probability = TRUE)
+curve(dnorm(x), add=TRUE)
+```

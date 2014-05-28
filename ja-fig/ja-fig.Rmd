@@ -1,0 +1,43 @@
+# プロットでの日本語フォントの利用 (Mac OS X)
+
+```{r, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.path = "figure/ja-fig-", fig.height=5, fig.width=5, fig.align="center", echo=FALSE)
+library(grid)
+
+# フォントの登録
+quartzFonts(
+  kan = quartzFont(rep("DFKanTeiRyu-XB-MP-RKSJ-H", 4)),
+  mei = quartzFont(rep("Meiryo", 4)),
+  rei = quartzFont(rep("DFLeiSho-SB-MP-RKSJ-H", 4)))
+```
+
+このRマークダウンファイルはUTF-8エンコーディングで保存してください。次のコマンドでHTMLファイルを作成できます。
+```{r eval=F, echo=TRUE}
+library(knitr)
+opts_knit$restore()
+opts_chunk$restore()
+knit2html("ja-fig.Rmd")
+browseURL("ja-fig.html")
+```
+
+```{r include=FALSE}
+# 下書きデバイスの設定
+opts0 <- options(device = function(file, width = 7, height = 7, ...) quartz(file=tempfile(), type="png", width = width, height = height, ...))
+```
+
+```{r fig1}
+# メイリオでプロットします。
+par(family="mei")
+plot(1:100, (1:100)^2, main="ざわ・・ざわ・・・", xlab="ざわ・・・", ylab="ざわ・・・")
+# 別のフォントを使います。
+par(family = "rei")
+mtext("ざわ・・ざわ・・・", 4, line=1, cex=1.5)
+# gridグラフィックスを使ってみます。
+grid.text(x = 0.5, y = 0.6, "ざわ・・・\n　　ざわ・・・", gp = gpar(fontsize = 16, fontfamily = "kan"))
+```
+
+```{r include=FALSE}
+# 下書きデバイスの復元
+options(opts0)
+```

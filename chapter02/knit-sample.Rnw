@@ -1,0 +1,36 @@
+\documentclass{ltjsarticle}
+\pagestyle{empty}
+\title{\texttt{knitr}によるPDFレポート生成}
+\author{@kohske}
+
+\begin{document}
+\maketitle
+
+平均とは
+\begin{itemize}
+\item $\frac{1}{n}\sum_{i}x_i$ということです。
+\item 例えば1から10までの平均は\Sexpr{mean(1:10)}です。
+\end{itemize}
+
+\subsection*{乱数の生成}
+
+10000個の正規乱数を生成して平均値を求めます。
+
+<<>>=
+set.seed(42)
+x <- rnorm(10000)
+mean(x)
+@ 
+
+\subsection*{ヒストグラム}
+
+正規乱数をヒストグラムとカーブフィッティングにより可視化します。
+
+<<knit-sample-fig-01, fig.height = 1.8, echo=F, fig.cap="ヒストグラム", fig.pos="h">>=
+par(mar=c(2.5, 2.5, 1.5, 1))
+hist(x, probability = TRUE)
+curve(dnorm(x), add=TRUE)
+@ 
+
+\end{document}
+

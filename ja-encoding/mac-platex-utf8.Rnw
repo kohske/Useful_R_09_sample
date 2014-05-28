@@ -1,0 +1,22 @@
+\documentclass{jsarticle}
+\pagestyle{empty}
+\title{\textbf{knitr}で日本語}
+\author{@kohske}
+
+\begin{document}
+\maketitle
+
+Mac + UTF8です。次のコマンドでPDFレポートを作成できます。
+
+<<eval=F>>=
+library(knitr)
+knit("mac-platex-utf8.Rnw")
+system("ptex2pdf -l mac-platex-utf8")
+@ 
+
+<<>>=
+a <- "ざわ・・・"
+paste(rep(a, 4), collapse=" ")
+@ 
+
+\end{document}

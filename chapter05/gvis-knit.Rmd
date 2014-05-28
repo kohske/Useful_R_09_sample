@@ -1,0 +1,17 @@
+# knitr + googleVis = \(\infty\)
+
+```{r setup, include=FALSE, cache=FALSE}
+library(googleVis)
+```
+
+<style>
+#mychart01 { border: solid 1px;}
+</style>
+
+## 映画のレイティング
+
+```{r, results="asis"}
+d <- data.frame(table(cut(ggplot2::movies$rating, 0:10)))
+p <- gvisPieChart(d, options = list(pieHole = 0.5, title = "レイティングの頻度", chartArea = "{left:100,top:50}", height=300), chartid="mychart01")
+print(p, tag = "chart")
+```

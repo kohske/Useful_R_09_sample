@@ -1,0 +1,21 @@
+---
+title       : CSSによるスタイル指定
+author      : "@kohske"
+framework   : io2012
+mode        : standalone
+--- #p1
+
+<style>
+  #p1 code {color: white; background: black;}
+  #p2 code {border: dotted 3px;}
+</style>
+
+## <s>イリス</s>アイリスの解析
+```{r, results = "asis"}
+kable(head(iris, 10))
+```
+--- #p2
+## 重回帰
+```{r}
+coef(summary(lm(Sepal.Length~., iris)))
+```

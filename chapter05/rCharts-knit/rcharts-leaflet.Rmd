@@ -1,0 +1,32 @@
+# rCharts featuring leaflet
+
+```{r setup, include=FALSE, cache=FALSE}
+# セットアップチャンク
+set.seed(42)
+
+library(knitr)
+opts_chunk$set(results="asis", cache=FALSE) # rChartsの出力用オプション
+
+library(rCharts)
+
+# プロットのサイズを設定
+w <- 800; h <- 600
+options(RCHART_WIDTH=w, RCHART_HEIGHT=h)
+
+# 出力用補助関数
+o0 <- function(x) x$show("inline", include_assets = TRUE, cdn = TRUE)
+o <- function(x) x$show("inline", include_assets = FALSE)
+```
+
+<!-- プロットのスタイル指定 -->
+<style>
+.rChart { border: solid 2px; margin: auto; width: `r w`px; height: `r h`px;}
+</style>
+
+```{r}
+cen <- c(36+6/60, 139+39/60+18/60/60)
+p <- Leaflet$new()
+p$setView(cen, 13)
+p$marker(cen, bindPopup = "鷲宮神社")
+o0(p)
+```

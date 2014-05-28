@@ -1,0 +1,16 @@
+\documentclass{ltjsarticle}
+\pagestyle{empty}
+\title{\Sexpr{.knitr.title}}
+\author{\Sexpr{.knitr.author}}
+
+\begin{document}
+\maketitle
+
+\section*{\Sexpr{format(Sys.Date(), "%Y年%b月%d日(%a)")}のstitch〜〜}
+
+% 以下のチャンクがRスクリプトのコードで置き換えられます。
+<<%sCHUNK_LABEL_HERE>>=
+@
+
+\end{document}
+

@@ -1,0 +1,25 @@
+## knitによるHTMLレポート生成
+ 
+平均とは
+- \(\frac{1}{n}\sum_{i}x_i\)ということです。
+- 例えば1から10までの平均は`r mean(1:10)`です。
+
+### 乱数の生成
+
+10000個の正規乱数を生成して平均値を求めます。
+
+```{r}
+set.seed(42)
+x <- rnorm(10000)
+mean(x)
+```
+
+### ヒストグラム
+
+正規乱数をヒストグラムとカーブフィッティングにより可視化します。
+
+```{r knit-sample-fig-01, fig.height = 1.8, echo=F}
+par(mar=c(2.5, 2.5, 1.5, 1))
+hist(x, probability = TRUE)
+curve(dnorm(x), add=TRUE)
+```

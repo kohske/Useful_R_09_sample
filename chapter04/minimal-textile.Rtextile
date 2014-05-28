@@ -1,0 +1,8 @@
+h1. Textileマークアップでknitr
+
+###. begin.rcode chunk-01, prompt=TRUE
+set.seed(42)
+mean(rnorm(10))
+###. end.rcode
+
+1から10の平均は@@r mean(1:10) @@です。

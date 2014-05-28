@@ -1,0 +1,49 @@
+# rCharts featuring highcharts
+
+```{r setup, include=FALSE, cache=FALSE}
+# セットアップチャンク
+set.seed(42)
+
+library(knitr)
+opts_chunk$set(results="asis", cache=FALSE) # rChartsの出力用オプション
+
+library(rCharts)
+
+# プロットのサイズを設定
+w <- 800; h <- 600
+options(RCHART_WIDTH=w, RCHART_HEIGHT=h)
+
+# 出力用補助関数
+o0 <- function(x) x$show("inline", include_assets = TRUE, cdn = TRUE)
+o <- function(x) x$show("inline", include_assets = FALSE)
+```
+
+<!-- プロットのスタイル指定 -->
+<style>
+.rChart { border: solid 2px; margin: auto; width: `r w`px; height: `r h`px;}
+</style>
+
+## ズーム可能な散布図
+```{r}
+p <- hPlot(Sepal.Length ~ Sepal.Width, group = "Species", data = iris, type = "scatter")
+p$chart(zoomType = "xy")
+o0(p)
+```
+
+プロット上でマウスをドラッグするとその領域にズームします。
+
+## ドーナツチャート
+```{r}
+d <- data.frame(label = c("とらドラ！", "化物語", "俺の妹がこんなに可愛いわけがない", "IS"), value = c(193, 162, 97, 88))
+p <- hPlot(value ~ label, data = d, type = 'pie', title = "人気投票")
+p$params$series[[1]]$name <- "番組名"
+o(p)
+```
+
+## 棒グラフ
+```{r}
+hair_eye <- as.data.frame(HairEyeColor)
+p <- hPlot(Freq ~ Hair, group = 'Eye', data = subset(hair_eye, Sex == "Female"), type = 'column')
+p$plotOptions(column = list(dataLabels = list(enabled = T, rotation = -90, align = 'right', color = '#FFFFFF', x = 4, y = 10)))
+o(p)
+```

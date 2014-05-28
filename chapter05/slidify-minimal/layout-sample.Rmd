@@ -1,0 +1,19 @@
+---
+title       : ページ属性の設定
+author      : "@kohske"
+framework   : io2012
+mode        : standalone
+--- &twocol bg:lightcyan
+
+## 正規分布のハナシ
+*** =left
+### 正規分布の確率密度関数
+```{r layout-sapmle-1L, fig.width=6, fig.height=6}
+curve(dnorm(x), -3, 3)
+```
+
+*** =right
+### 正規分布の累積分布関数
+```{r layout-sapmle-1R, fig.width=6, fig.height=6}
+curve(pnorm(x), -3, 3)
+```

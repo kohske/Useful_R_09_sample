@@ -1,0 +1,8 @@
+# `r if (exists('.knitr.title')) I(.knitr.title)`
+`r if (exists('.knitr.author')) paste0("by ", I(.knitr.author))`
+
+# `r format(Sys.Date(), "%Y年%b月%d日(%a)")`のstitch〜〜
+
+<!-- このコードチャンクがRスクリプトのコードで置き換えられます。 -->
+```{r %sCHUNK_LABEL_HERE}
+```

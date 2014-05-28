@@ -1,0 +1,52 @@
+# rCharts featuring morris.js
+
+```{r setup, include=FALSE, cache=FALSE}
+# セットアップチャンク
+set.seed(42)
+
+library(knitr)
+opts_chunk$set(results="asis", cache=FALSE) # rChartsの出力用オプション
+
+library(rCharts)
+
+# プロットのサイズを設定
+w <- 800; h <- 600
+options(RCHART_WIDTH=w, RCHART_HEIGHT=h)
+
+# 出力用補助関数
+o0 <- function(x) x$show("inline", include_assets = TRUE, cdn = TRUE)
+o <- function(x) x$show("inline", include_assets = FALSE)
+```
+
+<!-- プロットのスタイル指定 -->
+<style>
+.rChart { border: solid 2px; margin: auto; width: `r w`px; height: `r h`px;}
+</style>
+
+## 2系列の時系列プロット
+```{r}
+d <- data.frame(x = paste(2001:2010), y1 = runif(10), y2 = runif(10))
+p <- mPlot(x = "x", y = c("y1", "y2"), data = d, type = "Line", labels = c("系列1", "系列2"))
+o0(p)
+```
+
+## 3系列の時系列エリアチャート
+```{r}
+d <- data.frame(x = paste(2001:2010), y1 = runif(10), y2 = runif(10), y3 = runif(10))
+p <- mPlot(x = "x", y = c("y1", "y2", "y3"), data = d, type = "Area", smooth=FALSE, pointSize = 10, lineWidth = 5)
+o(p)
+```
+
+## 棒グラフ
+```{r}
+d <- data.frame(x = paste(2001:2010), y1 = runif(10), y2 = runif(10), y3 = runif(10))
+p <- mPlot(x = "x", y = c("y1", "y2", "y3"), data = d, type = "Bar", barColors = c("red", "green", "blue"))
+o(p)
+```
+
+## ドーナツチャート
+```{r}
+d <- data.frame(label = c("とらドラ！", "化物語", "俺の妹がこんなに可愛いわけがない", "IS"), value = c(193, 162, 97, 88))
+p <- mPlot(x = NULL, y = NULL, data = d, type = "Donut", formatter = "#! function (y) { return(y+'人が萌えた'); } !#" )
+o(p)
+```

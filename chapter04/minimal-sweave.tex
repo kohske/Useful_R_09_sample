@@ -1,0 +1,33 @@
+\documentclass{ltjsarticle}
+\pagestyle{empty}
+\title{はじめての\textbf{knitr}}
+\author{@kohske}
+
+% フックの登録
+
+% 既定のチャンクオプション
+
+
+\usepackage{Sweave}
+\begin{document}
+\maketitle
+
+10000個の正規乱数の平均値です。
+
+\begin{Schunk}
+\begin{Sinput}
+> set.seed(42)
+> x <- rnorm(10000)
+> mean(x)
+\end{Sinput}
+\begin{Soutput}
+[1] -0.01130945
+\end{Soutput}
+\end{Schunk}
+
+分散は1.0123072856928です。
+
+\vspace{1em}
+\includegraphics{minimal-sweave-minimal-sweave-plot}
+
+\end{document}

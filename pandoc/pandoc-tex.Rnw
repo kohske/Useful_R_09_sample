@@ -1,0 +1,33 @@
+\documentclass{ltjsarticle}
+\usepackage{luatexja} 
+\pagestyle{empty}
+\title{はじめての\textbf{knitr}}
+\author{@kohske}
+
+<<include=FALSE>>=
+hook_plot = knit_hooks$get('plot')
+knit_hooks$set(plot = function(x, options) {
+  hook_plot(paste(c(x, 'whatever'), collapse = '.'), options)
+})
+@ 
+
+\begin{document}
+\maketitle
+
+10000個の正規乱数の平均値です。
+
+<<echo=FALSE>>=
+set.seed(42)
+x <- rnorm(10000)
+mean(x)
+@
+
+分散は\Sexpr{var(x)}です。
+
+<<pandoc-tex-fig1, fig.height = 3, fig.width = 3, dpi = 150, dev="png">>=
+par(mar=c(3, 3, 1, 1))
+hist(x, probability = TRUE)
+curve(dnorm(x), add=TRUE)
+@
+
+\end{document}
