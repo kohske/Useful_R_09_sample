@@ -1,9 +1,9 @@
 ```{r setup, include=FALSE}
 # markdownToHTMLでヘッダに必要なライブラリを読み込むように指定します。
 options(markdown.HTML.header=
-  '<link rel="stylesheet" href="http://vis.supstat.com//assets/themes/dinky/css/scianimator.css">
+  '<link rel="stylesheet" href="https://rawgithub.com/brentertz/scianimator/master/assets/css/scianimator.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://vis.supstat.com/assets/themes/dinky/js/jquery.scianimator.min.js"></script>'
+  <script src="https://rawgithub.com/brentertz/scianimator/master/assets/js/jquery.scianimator.min.js"></script>'
 )
 
 # アニメーション作成用のフック関数を指定します。
